@@ -1,0 +1,80 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,400italic);
+
+body {
+    font-family: 'Source Sans Pro', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 600;
+}
+
+p {
+    font-size: 1.1em;
+}
+
+img {
+    max-width: 700px;
+}
+
+#bimg-doc-body {
+    width: 700px;
+    float: left;
+    border-left: 1px solid black;
+    margin-left: 20%;
+    padding-left: 30px;
+    padding-right: 80px;
+    overflow: auto;
+}
+
+#bimg-doc-nav {
+    position: fixed;
+    top: 0px;
+    width: 20%;
+    float: left;
+    overflow: auto;
+}
+
+#bimg-doc-nav ul {
+    list-style: none;
+    margin: 20px;
+    padding: 0;
+}
+
+#bimg-doc-nav a {
+    color: #000;
+    font-size: 1.2em;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+#bimg-doc-nav a:hover {
+    color: #4271FF;
+}
+
+footer {
+    position: fixed;
+    text-align: center;
+    z-index: 1;
+    background: #fff;
+    bottom: 0;
+    width: 20%;
+    clear: both;
+    margin-top: -40px;
+    height: 40px;
+    border-top: 1px solid black;
+}
+
+footer p {
+    margin-top: 10px;
+}
+
+footer a {
+    color: #000;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1em;
+}
+
+footer a:hover {
+    color: #4271FF;
+}
