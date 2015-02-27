@@ -27,7 +27,7 @@ img {
 
 #bimg-doc-nav {
     position: fixed;
-    top: 0px;
+    top: 0;
     width: 20%;
     float: left;
     overflow: auto;
