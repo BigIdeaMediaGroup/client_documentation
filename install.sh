@@ -15,3 +15,6 @@ for FILE in *.html
 do
   sed -e "s/{WEBSITE}/$SITE/g" -i $FILE
 done
+
+cd $DIR
+zip -r documentation ./{index.php,css,html,images}
