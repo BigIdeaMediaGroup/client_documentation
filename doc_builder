@@ -1,0 +1,79 @@
+#!/bin/bash
+
+# Initial Variables and Constants
+DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+ASSETS=( images html )
+MODE="help"
+
+# Functions
+usage()
+{
+  echo "Usage: $(basename "$0") [ -b | --build ] [ -h | --help ] [ -i | --init ]
+
+Builds a documentation webpage from markdown files. If called without any
+arguments, the program will display this help text.
+
+Optional Arguments:
+  -b, --build  Build the webpage
+  -h, --help   Show this help text
+  -i, --init   Create a sane working environment"
+}
+
+initialize()
+{
+  for asset_dir in ${ASSETS[@]}
+  do
+    if [ ! -d "$DIR/$asset_dir" ]; then
+      mkdir "$DIR/$asset_dir"
+    fi
+  done
+}
+
+build()
+{
+  echo -n "Site name: "
+  read SITE
+  echo -n "Site URL: "
+  read URL
+
+  cd $DIR/md
+  for FILE in *.md
+  do
+    sed -e "s@{WEBSITE}@$SITE@g" -i $FILE
+    sed -e "s@{URL}@$URL@g" -i $FILE
+    cmark "$FILE" > "../html/${FILE%.md}.html"
+  done
+
+  cd $DIR
+  zip -r documentation ./{index.php,css,html,images}
+}
+
+# Check Parameters
+while [ $# -gt 0 ]; do
+  case "$1" in
+    -h|--help)
+      MODE="help"
+      ;;
+    -i|--init)
+      MODE="init"
+      ;;
+    -b|--build)
+      MODE="build"
+      ;;
+    *)
+      printf "UNRECOGNIZED PARAMETER: %s\n\n" "$1" >&2
+      usage >&2
+      exit 1
+      ;;
+  esac
+  shift
+done
+
+# Main Loop
+if [ $MODE = "init" ]; then
+  initialize
+elif [ $MODE = "build" ]; then
+  build
+elif [ $MODE = "help" ]; then
+  usage
+fi
