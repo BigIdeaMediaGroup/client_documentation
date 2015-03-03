@@ -37,11 +37,19 @@ img {
     padding: 0;
 }
 
+#doc-nav ul li ul li ul {
+    margin-top: 2px;
+}
+
 #doc-nav a {
     color: #000;
     font-size: 1.2em;
     text-decoration: none;
     font-weight: 600;
+}
+
+#doc-nav ul li ul li ul li a {
+    font-weight: normal;
 }
 
 #doc-nav a:hover {
