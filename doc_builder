@@ -2,7 +2,7 @@
 
 # Initial Variables and Constants
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-ASSETS=( images html )
+ASSETS=( css images html md )
 MODE="help"
 
 # Functions
@@ -26,6 +26,7 @@ initialize()
     if [ ! -d "$DIR/$asset_dir" ]; then
       mkdir "$DIR/$asset_dir"
     fi
+    chmod 755 "$DIR/$asset_dir"
   done
 }
 
